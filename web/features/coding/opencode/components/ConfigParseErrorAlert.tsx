@@ -1,6 +1,6 @@
 import React from 'react';
-import { Alert, Button, Space, Typography, Modal } from 'antd';
-import { DeleteOutlined, FolderOpenOutlined, ExclamationCircleOutlined, ReloadOutlined } from '@ant-design/icons';
+import { Alert, Button, Space, Typography, Modal } from '@/components/ui';
+import { DeleteOutlined, FolderOpenOutlined, ExclamationCircleOutlined, ReloadOutlined } from '@/components/ui/icons';
 import { useTranslation } from 'react-i18next';
 import { revealItemInDir } from '@tauri-apps/plugin-opener';
 import { invoke } from '@tauri-apps/api/core';

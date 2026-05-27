@@ -1,6 +1,6 @@
 import React from 'react';
-import { Card, Space, Button, Dropdown, Tag, Typography, Switch, Tooltip, message } from 'antd';
-import type { MenuProps } from 'antd';
+import { Card, Space, Button, Dropdown, Tag, Typography, Switch, Tooltip, message } from '@/components/ui';
+import type { MenuProps } from '@/components/ui';
 import {
   ApiOutlined,
   CheckCircleOutlined,
@@ -15,7 +15,7 @@ import {
   MoreOutlined,
   RightOutlined,
   SyncOutlined,
-} from '@ant-design/icons';
+} from '@/components/ui/icons';
 import { BarChart2 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';

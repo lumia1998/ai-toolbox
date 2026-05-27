@@ -1,6 +1,6 @@
 import React from 'react';
-import { Modal, Checkbox, Button, Empty, Spin, Typography, Tag, message } from 'antd';
-import { CloudServerOutlined, AppstoreOutlined } from '@ant-design/icons';
+import { Modal, Checkbox, Button, Empty, Spin, Typography, Tag, message } from '@/components/ui';
+import { CloudServerOutlined, AppstoreOutlined } from '@/components/ui/icons';
 import { useTranslation } from 'react-i18next';
 import { readCurrentOpenCodeProviders } from '@/services/opencodeApi';
 import type { OpenCodeProvider } from '@/types/opencode';

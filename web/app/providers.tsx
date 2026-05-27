@@ -1,7 +1,7 @@
 import React from 'react';
-import { ConfigProvider, Spin, App, theme as antdTheme, Button, Modal, Progress, Typography, Space } from 'antd';
-import zhCN from 'antd/locale/zh_CN';
-import enUS from 'antd/locale/en_US';
+import { ConfigProvider, Spin, App, theme as uiTheme, Button, Modal, Progress, Typography, Space } from '@/components/ui';
+import zhCN from '@/components/ui/locales/zh_CN';
+import enUS from '@/components/ui/locales/en_US';
 import { emit, listen } from '@tauri-apps/api/event';
 import { TRAY_CONFIG_REFRESH_EVENT } from '@/constants/configEvents';
 import { useAppStore, useSettingsStore } from '@/stores';
@@ -24,7 +24,7 @@ interface ProvidersProps {
   children: React.ReactNode;
 }
 
-const antdLocales = {
+const uiLocales = {
   'zh-CN': zhCN,
   'en-US': enUS,
 };
@@ -373,11 +373,11 @@ export const Providers: React.FC<ProvidersProps> = ({ children }) => {
 
   return (
     <ConfigProvider
-      locale={antdLocales[language]}
+      locale={uiLocales[language]}
       theme={{
-        algorithm: resolvedTheme === 'dark' ? antdTheme.darkAlgorithm : antdTheme.defaultAlgorithm,
+        algorithm: resolvedTheme === 'dark' ? uiTheme.darkAlgorithm : uiTheme.defaultAlgorithm,
         token: {
-          colorPrimary: '#1890ff',
+          colorPrimary: 'var(--ant-color-primary)',
         },
       }}
     >

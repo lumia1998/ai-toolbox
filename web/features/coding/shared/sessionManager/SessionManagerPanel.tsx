@@ -14,7 +14,7 @@ import {
   ReloadOutlined,
   SearchOutlined,
   UnorderedListOutlined,
-} from '@ant-design/icons';
+} from '@/components/ui/icons';
 import {
   Button,
   Checkbox,
@@ -30,7 +30,7 @@ import {
   Tag,
   Typography,
   message,
-} from 'antd';
+} from '@/components/ui';
 import { useTranslation } from 'react-i18next';
 import { open, save } from '@tauri-apps/plugin-dialog';
 

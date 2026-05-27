@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { Modal, Form, Input, Select, Button, Space, Checkbox, Dropdown, Tag, message, InputNumber } from 'antd';
-import { PlusOutlined, MinusCircleOutlined, ExportOutlined } from '@ant-design/icons';
+import { Modal, Form, Input, Select, Button, Space, Checkbox, Dropdown, Tag, message, InputNumber } from '@/components/ui';
+import { PlusOutlined, MinusCircleOutlined, ExportOutlined } from '@/components/ui/icons';
 import { useTranslation } from 'react-i18next';
 import * as mcpApi from '../../services/mcpApi';
 import type { CreateMcpServerInput, UpdateMcpServerInput, McpTool, McpServer, StdioConfig, HttpConfig } from '../../types';

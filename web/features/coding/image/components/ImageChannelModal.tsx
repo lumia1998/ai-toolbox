@@ -1,6 +1,6 @@
 import React from 'react';
-import { App, Button, Dropdown, Input, InputNumber, Modal, Switch, Typography } from 'antd';
-import type { MenuProps } from 'antd';
+import { App, Button, Dropdown, Input, InputNumber, Modal, Switch, Typography } from '@/components/ui';
+import type { MenuProps } from '@/components/ui';
 import { Plus, Trash2, ChevronDown } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import type {

@@ -5,7 +5,7 @@
  */
 
 import React, { useEffect } from 'react';
-import { Modal, Form, Input, Select, Switch, Space, Typography, Divider } from 'antd';
+import { Modal, Form, Input, Select, Switch, Space, Typography, Divider } from '@/components/ui';
 import { useTranslation } from 'react-i18next';
 import { sshAddFileMapping, sshUpdateFileMapping } from '@/services/sshSyncApi';
 import { DEFAULT_SSH_DIRECTORY_EXCLUDES } from '@/types/sshsync';

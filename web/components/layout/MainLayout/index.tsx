@@ -1,12 +1,12 @@
 import React from 'react';
-import { Tabs } from 'antd';
+import { Tabs } from '@/components/ui';
+import { Cat, Sparkles } from 'lucide-react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { CodeOutlined, SettingOutlined } from '@ant-design/icons';
+import { CodeOutlined, SettingOutlined } from '@/components/ui/icons';
 import { platform } from '@tauri-apps/plugin-os';
 import { MODULES } from '@/constants';
 import { useAppStore, useSettingsStore } from '@/stores';
-import { useThemeStore } from '@/stores/themeStore';
 import { WSLStatusIndicator } from '@/features/settings/components/WSLStatusIndicator';
 import { WSLSyncModal } from '@/features/settings/components/WSLSyncModal';
 import { useWSLSync } from '@/features/settings/hooks/useWSLSync';
@@ -24,7 +24,6 @@ import styles from './styles.module.less';
 import OpencodeIcon from '@/assets/opencode.svg';
 import ClaudeIcon from '@/assets/claude.svg';
 import ChatgptIcon from '@/assets/chatgpt.svg';
-import { Gemini, OpenClaw as OpenClawIcon } from '@lobehub/icons';
 
 const TAB_ICONS: Record<string, string> = {
   opencode: OpencodeIcon,
@@ -43,7 +42,6 @@ const MainLayout: React.FC = () => {
   const location = useLocation();
   const { setCurrentModule, setCurrentSubTab } = useAppStore();
   const { visibleTabs } = useSettingsStore();
-  const { resolvedTheme } = useThemeStore();
   const { config, status, loadError } = useWSLSync();
   const { config: sshConfig, status: sshStatus } = useSSHSync();
 
@@ -188,13 +186,17 @@ const MainLayout: React.FC = () => {
                   label: (
                     <span className={styles.tabLabel}>
                       {tab.key === 'openclaw' ? (
-                        resolvedTheme === 'dark' ? (
-                          <OpenClawIcon size={16} className={styles.tabIconColor} />
-                        ) : (
-                          <OpenClawIcon.Color size={16} className={styles.tabIconColor} />
-                        )
+                        <Cat
+                          size={16}
+                          className={styles.tabIconColor}
+                          strokeWidth={2}
+                        />
                       ) : tab.key === 'geminicli' ? (
-                        <Gemini.Color size={16} className={styles.tabIconColor} />
+                        <Sparkles
+                          size={16}
+                          className={styles.tabIconColor}
+                          strokeWidth={2}
+                        />
                       ) : TAB_ICONS[tab.key] ? (
                         <img src={TAB_ICONS[tab.key]} className={styles.tabIcon} alt="" />
                       ) : null}

@@ -1,6 +1,6 @@
 import React from 'react';
-import { Alert, Button, Collapse, Divider, Form, Input, InputNumber, Select, Switch, message } from 'antd';
-import { DeleteOutlined, PlusOutlined } from '@ant-design/icons';
+import { Alert, Button, Collapse, Divider, Form, Input, InputNumber, Select, Switch, message } from '@/components/ui';
+import { DeleteOutlined, PlusOutlined } from '@/components/ui/icons';
 import { useTranslation } from 'react-i18next';
 import JsonEditor from '@/components/common/JsonEditor';
 import type { OhMyOpenCodeSlimCouncilExecutionMode } from '@/types/ohMyOpenCodeSlim';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal, Button, message } from 'antd';
+import { Modal, Button, message } from '@/components/ui';
 import type { TFunction } from 'i18next';
 import { formatGitError, isGitError } from './gitErrorParser';
 import type { ToolOption } from '../types';

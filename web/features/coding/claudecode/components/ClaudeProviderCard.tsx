@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Space, Button, Dropdown, Tag, Typography, Switch, Tooltip, message } from 'antd';
+import { Card, Space, Button, Dropdown, Tag, Typography, Switch, Tooltip, message } from '@/components/ui';
 import {
   ApiOutlined,
   CheckOutlined,
@@ -9,8 +9,8 @@ import {
   MoreOutlined,
   CheckCircleOutlined,
   HolderOutlined,
-} from '@ant-design/icons';
-import type { MenuProps } from 'antd';
+} from '@/components/ui/icons';
+import type { MenuProps } from '@/components/ui';
 import { BarChart2 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';

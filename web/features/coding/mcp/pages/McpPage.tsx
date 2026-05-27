@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { Modal, message } from 'antd';
+import { Modal, message } from '@/components/ui';
 import {
   ChevronsDown,
   ChevronsUp,

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal, Typography } from 'antd';
+import { Modal, Typography } from '@/components/ui';
 import { useTranslation } from 'react-i18next';
 import JsonEditor from '@/components/common/JsonEditor';
 

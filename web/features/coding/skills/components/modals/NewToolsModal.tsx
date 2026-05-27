@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal, Button, message } from 'antd';
+import { Modal, Button, message } from '@/components/ui';
 import { useTranslation } from 'react-i18next';
 import { useSkillsStore } from '../../stores/skillsStore';
 import * as api from '../../services/skillsApi';

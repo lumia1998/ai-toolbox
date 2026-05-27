@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Form, Input, Modal, message } from 'antd';
+import { Button, Form, Input, Modal, message } from '@/components/ui';
 import { Plus, Save } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { upsertModelPricing, type ModelPricing } from '@/services';

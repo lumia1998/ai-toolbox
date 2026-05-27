@@ -1,6 +1,6 @@
 import React from 'react';
-import { Tag, Input, Space, Empty, Typography, Collapse, message, Tooltip, Popconfirm, Switch } from 'antd';
-import { PlusOutlined, CloseOutlined, DownOutlined, RightOutlined, ApiOutlined } from '@ant-design/icons';
+import { Tag, Input, Space, Empty, Typography, Collapse, message, Tooltip, Popconfirm, Switch } from '@/components/ui';
+import { PlusOutlined, CloseOutlined, DownOutlined, RightOutlined, ApiOutlined } from '@/components/ui/icons';
 import { useTranslation } from 'react-i18next';
 import type { OpenCodePluginEntry } from '@/types/opencode';
 import {

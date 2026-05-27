@@ -1,6 +1,6 @@
 import React from 'react';
-import { Alert, Button, Input, Modal, Select, Spin, Table, message } from 'antd';
-import type { ColumnsType } from 'antd/es/table';
+import { Alert, Button, Input, Modal, Select, Spin, Table, message } from '@/components/ui';
+import type { ColumnsType } from '@/components/ui/table';
 import { Pencil, Plus, RefreshCw, Trash2 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import {

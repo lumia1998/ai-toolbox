@@ -1,6 +1,6 @@
 import React from 'react';
-import { Alert, AutoComplete, Button, Form, Input, message, Modal, Radio, Typography } from 'antd';
-import { CloudDownloadOutlined, EyeInvisibleOutlined, EyeOutlined } from '@ant-design/icons';
+import { Alert, AutoComplete, Button, Form, Input, message, Modal, Radio, Typography } from '@/components/ui';
+import { CloudDownloadOutlined, EyeInvisibleOutlined, EyeOutlined } from '@/components/ui/icons';
 import { invoke } from '@tauri-apps/api/core';
 import { useTranslation } from 'react-i18next';
 import JsonEditor from '@/components/common/JsonEditor';

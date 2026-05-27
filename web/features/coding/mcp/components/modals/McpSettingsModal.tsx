@@ -1,6 +1,6 @@
 import React from 'react';
-import { Modal, Button, Checkbox, message, Form, Input, Space, Tooltip, Switch, Radio } from 'antd';
-import { ClearOutlined, DeleteOutlined, PlusOutlined } from '@ant-design/icons';
+import { Modal, Button, Checkbox, message, Form, Input, Space, Tooltip, Switch, Radio } from '@/components/ui';
+import { ClearOutlined, DeleteOutlined, PlusOutlined } from '@/components/ui/icons';
 import { useTranslation } from 'react-i18next';
 import type { McpServer, McpTool, StdioConfig, HttpConfig } from '../../types';
 import * as mcpApi from '../../services/mcpApi';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal, Checkbox, Button, Empty } from 'antd';
+import { Modal, Checkbox, Button, Empty } from '@/components/ui';
 import { useTranslation } from 'react-i18next';
 import type { GitSkillCandidate } from '../../types';
 import styles from './GitPickModal.module.less';

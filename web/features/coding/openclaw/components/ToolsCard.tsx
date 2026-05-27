@@ -1,6 +1,6 @@
 import React from 'react';
-import { Button, Form, Input, Select, Tag, Typography, message } from 'antd';
-import { PlusOutlined } from '@ant-design/icons';
+import { Button, Form, Input, Select, Tag, Typography, message } from '@/components/ui';
+import { PlusOutlined } from '@/components/ui/icons';
 import { useTranslation } from 'react-i18next';
 import { setOpenClawTools } from '@/services/openclawApi';
 import type { OpenClawToolsConfig } from '@/types/openclaw';

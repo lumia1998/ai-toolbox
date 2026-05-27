@@ -1,6 +1,6 @@
 import React from 'react';
-import { Modal, Form, Input, Select, Button, Typography, message, InputNumber, Switch, Space, Checkbox, Radio } from 'antd';
-import { EyeOutlined, EyeInvisibleOutlined, RightOutlined, DownOutlined } from '@ant-design/icons';
+import { Modal, Form, Input, Select, Button, Typography, message, InputNumber, Switch, Space, Checkbox, Radio } from '@/components/ui';
+import { EyeOutlined, EyeInvisibleOutlined, RightOutlined, DownOutlined } from '@/components/ui/icons';
 import { useTranslation } from 'react-i18next';
 import { useAppStore } from '@/stores';
 import { PROVIDER_TYPES } from '@/constants/providerTypes';

@@ -1,7 +1,7 @@
 import React from 'react';
-import { Button, Menu, Typography } from 'antd';
-import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
-import type { MenuProps } from 'antd';
+import { Button, Menu, Typography } from '@/components/ui';
+import { MenuFoldOutlined, MenuUnfoldOutlined } from '@/components/ui/icons';
+import type { MenuProps } from '@/components/ui';
 import styles from './SectionSidebarLayout.module.less';
 
 export type SidebarSectionMarker = {
@@ -22,7 +22,7 @@ interface SectionSidebarLayoutProps {
   sections?: SidebarSectionMarker[];
   /**
    * Return an icon for a section id.
-   * If not provided, Menu items will show no icon (default antd behavior).
+   * If not provided, Menu items will show no icon.
    */
   getIcon?: (id: string) => React.ReactNode;
   /**

@@ -1,6 +1,6 @@
 import React from 'react';
-import { Button, Space, message, Modal } from 'antd';
-import { CheckOutlined, DownloadOutlined, FileSearchOutlined, FolderOpenOutlined, RobotOutlined } from '@ant-design/icons';
+import { Button, Space, message, Modal } from '@/components/ui';
+import { CheckOutlined, DownloadOutlined, FileSearchOutlined, FolderOpenOutlined, RobotOutlined } from '@/components/ui/icons';
 import { open as openDialog } from '@tauri-apps/plugin-dialog';
 import { useTranslation } from 'react-i18next';
 import * as api from '../../services/skillsApi';

@@ -1,6 +1,6 @@
 import React from 'react';
-import { Modal, InputNumber, Button, Checkbox, message, Form, Input, Space, Tooltip, Switch, Radio } from 'antd';
-import { FolderOpenOutlined, DeleteOutlined, PlusOutlined, ClearOutlined } from '@ant-design/icons';
+import { Modal, InputNumber, Button, Checkbox, message, Form, Input, Space, Tooltip, Switch, Radio } from '@/components/ui';
+import { FolderOpenOutlined, DeleteOutlined, PlusOutlined, ClearOutlined } from '@/components/ui/icons';
 import { revealItemInDir } from '@tauri-apps/plugin-opener';
 import { useTranslation } from 'react-i18next';
 import type { ToolInfo, CustomTool, SkillViewMode } from '../../types';

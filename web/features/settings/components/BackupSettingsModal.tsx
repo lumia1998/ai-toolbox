@@ -17,7 +17,7 @@ import {
   Popconfirm,
   Typography,
   type RadioChangeEvent,
-} from 'antd';
+} from '@/components/ui';
 import {
   DeleteOutlined,
   EditOutlined,
@@ -25,7 +25,7 @@ import {
   FolderOutlined,
   FolderOpenOutlined,
   PlusOutlined,
-} from '@ant-design/icons';
+} from '@/components/ui/icons';
 import { useTranslation } from 'react-i18next';
 import { open } from '@tauri-apps/plugin-dialog';
 import { useSettingsStore, type WebDAVConfigFE } from '@/stores';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Modal, Select, Typography, message } from 'antd';
+import { Form, Modal, Select, Typography, message } from '@/components/ui';
 import { useTranslation } from 'react-i18next';
 import { setOpenClawAgentsDefaults } from '@/services/openclawApi';
 import JsonEditor from '@/components/common/JsonEditor';

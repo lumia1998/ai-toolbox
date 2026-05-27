@@ -1,6 +1,6 @@
 import React from 'react';
-import { Tabs, Input, Button, Checkbox, Space, message, Spin, Dropdown, AutoComplete, Tag, Modal } from 'antd';
-import { FolderOutlined, GithubOutlined, PlusOutlined } from '@ant-design/icons';
+import { Tabs, Input, Button, Checkbox, Space, message, Spin, Dropdown, AutoComplete, Tag, Modal } from '@/components/ui';
+import { FolderOutlined, GithubOutlined, PlusOutlined } from '@/components/ui/icons';
 import { open } from '@tauri-apps/plugin-dialog';
 import { useTranslation } from 'react-i18next';
 import * as api from '../../services/skillsApi';

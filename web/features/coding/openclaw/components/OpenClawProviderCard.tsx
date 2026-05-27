@@ -1,6 +1,6 @@
 import React from 'react';
-import { Button, Space, Tooltip } from 'antd';
-import { ApiOutlined, CloudDownloadOutlined } from '@ant-design/icons';
+import { Button, Space, Tooltip } from '@/components/ui';
+import { ApiOutlined, CloudDownloadOutlined } from '@/components/ui/icons';
 import { useTranslation } from 'react-i18next';
 import ProviderCard from '@/components/common/ProviderCard';
 import type {

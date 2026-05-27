@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
-import { Modal, Checkbox, Button, Empty, message, Spin, Tag, Dropdown } from 'antd';
-import { PlusOutlined, WarningOutlined } from '@ant-design/icons';
+import { Modal, Checkbox, Button, Empty, message, Spin, Tag, Dropdown } from '@/components/ui';
+import { PlusOutlined, WarningOutlined } from '@/components/ui/icons';
 import { useTranslation } from 'react-i18next';
 import { useMcpStore } from '../../stores/mcpStore';
 import { useMcpTools } from '../../hooks/useMcpTools';

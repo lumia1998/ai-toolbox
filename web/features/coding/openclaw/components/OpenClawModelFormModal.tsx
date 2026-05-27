@@ -1,6 +1,6 @@
 import React from 'react';
-import { Modal, Form, Input, AutoComplete, Button, InputNumber, Tag, Divider, Row, Col, Typography, Checkbox } from 'antd';
-import { RightOutlined, DownOutlined } from '@ant-design/icons';
+import { Modal, Form, Input, AutoComplete, Button, InputNumber, Tag, Divider, Row, Col, Typography, Checkbox } from '@/components/ui';
+import { RightOutlined, DownOutlined } from '@/components/ui/icons';
 import { useTranslation } from 'react-i18next';
 import { useAppStore } from '@/stores';
 import {

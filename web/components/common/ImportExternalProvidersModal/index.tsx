@@ -1,6 +1,6 @@
 import React from 'react';
-import { Modal, Checkbox, Button, Empty, Spin, Typography, Tag, Input } from 'antd';
-import { ApiOutlined, CloudServerOutlined, AppstoreOutlined } from '@ant-design/icons';
+import { Modal, Checkbox, Button, Empty, Spin, Typography, Tag, Input } from '@/components/ui';
+import { ApiOutlined, CloudServerOutlined, AppstoreOutlined } from '@/components/ui/icons';
 import { openUrl } from '@tauri-apps/plugin-opener';
 import type {
   ExternalProviderDisplayItem,

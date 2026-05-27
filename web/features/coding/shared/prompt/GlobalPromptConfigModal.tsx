@@ -1,5 +1,5 @@
 import React from 'react';
-import { Alert, Button, Form, Input, Modal } from 'antd';
+import { Alert, Button, Form, Input, Modal } from '@/components/ui';
 import { useTranslation } from 'react-i18next';
 import MarkdownEditor from '@/components/common/MarkdownEditor';
 import type { GlobalPromptConfig } from '@/types/globalPrompt';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal, Alert, Button, message } from 'antd';
+import { Modal, Alert, Button, message } from '@/components/ui';
 import { useTranslation } from 'react-i18next';
 import {
   extractCodexCommonConfigFromCurrentFile,

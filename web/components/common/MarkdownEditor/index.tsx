@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { Button, Space } from 'antd';
+import { Button, Space } from '@/components/ui';
 import MonacoEditor from 'react-monaco-editor';
 import type { editor } from 'monaco-editor';
 import { useTranslation } from 'react-i18next';

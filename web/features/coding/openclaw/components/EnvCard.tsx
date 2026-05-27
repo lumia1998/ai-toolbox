@@ -1,6 +1,6 @@
 import React from 'react';
-import { Button, Input, Space, message, Empty } from 'antd';
-import { DeleteOutlined, PlusOutlined } from '@ant-design/icons';
+import { Button, Input, Space, message, Empty } from '@/components/ui';
+import { DeleteOutlined, PlusOutlined } from '@/components/ui/icons';
 import { useTranslation } from 'react-i18next';
 import { setOpenClawEnv } from '@/services/openclawApi';
 import type { OpenClawEnvConfig } from '@/types/openclaw';

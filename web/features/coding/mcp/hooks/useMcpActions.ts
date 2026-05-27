@@ -1,4 +1,4 @@
-import { message } from 'antd';
+import { message } from '@/components/ui';
 import { useTranslation } from 'react-i18next';
 import { useMcpStore } from '../stores/mcpStore';
 import * as mcpApi from '../services/mcpApi';

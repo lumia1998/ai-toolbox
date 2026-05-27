@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Card, Dropdown, Space, Tag, Typography, theme } from 'antd';
+import { Button, Card, Dropdown, Space, Tag, Typography, theme } from '@/components/ui';
 import {
   CheckCircleOutlined,
   CheckOutlined,
@@ -9,8 +9,8 @@ import {
   HolderOutlined,
   MoreOutlined,
   UpOutlined,
-} from '@ant-design/icons';
-import type { MenuProps } from 'antd';
+} from '@/components/ui/icons';
+import type { MenuProps } from '@/components/ui';
 import { useTranslation } from 'react-i18next';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';

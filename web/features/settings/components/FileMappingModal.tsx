@@ -5,7 +5,7 @@
  */
 
 import React, { useEffect } from 'react';
-import { Modal, Form, Input, Select, Switch, Divider, Button, Modal as AntdModal } from 'antd';
+import { Modal, Form, Input, Select, Switch, Divider, Button, Modal as AntdModal } from '@/components/ui';
 import { useTranslation } from 'react-i18next';
 import { wslAddFileMapping, wslUpdateFileMapping } from '@/services/wslSyncApi';
 import type { FileMapping } from '@/types/wslsync';

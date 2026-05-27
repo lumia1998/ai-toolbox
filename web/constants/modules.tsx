@@ -1,5 +1,5 @@
 import React from 'react';
-import { CodeOutlined, SettingOutlined } from '@ant-design/icons';
+import { CodeOutlined, SettingOutlined } from '@/components/ui/icons';
 
 export interface SubTab {
   key: string;

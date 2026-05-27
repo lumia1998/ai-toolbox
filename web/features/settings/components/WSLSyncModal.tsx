@@ -5,8 +5,8 @@
  */
 
 import React, { useState, useEffect, useCallback } from 'react';
-import { Modal, Form, Switch, Select, Button, List, Space, Typography, Alert, Spin, Tag, Modal as AntdModal, Tabs, Tooltip, Progress } from 'antd';
-import { CheckCircleOutlined, CloseCircleOutlined, ReloadOutlined, DeleteOutlined, EditOutlined, PlusOutlined, ClearOutlined, CodeOutlined, FolderOpenOutlined } from '@ant-design/icons';
+import { Modal, Form, Switch, Select, Button, List, Space, Typography, Alert, Spin, Tag, Modal as AntdModal, Tabs, Tooltip, Progress } from '@/components/ui';
+import { CheckCircleOutlined, CloseCircleOutlined, ReloadOutlined, DeleteOutlined, EditOutlined, PlusOutlined, ClearOutlined, CodeOutlined, FolderOpenOutlined } from '@/components/ui/icons';
 import { useTranslation } from 'react-i18next';
 import { useWSLSync } from '@/features/settings/hooks/useWSLSync';
 import { useSettingsStore } from '@/stores';

@@ -1,6 +1,6 @@
 import React from 'react';
-import { Modal, Form, Input, Button, Space, Typography, message } from 'antd';
-import { ExclamationCircleOutlined, FolderOpenOutlined, InfoCircleOutlined, ReloadOutlined } from '@ant-design/icons';
+import { Modal, Form, Input, Button, Space, Typography, message } from '@/components/ui';
+import { ExclamationCircleOutlined, FolderOpenOutlined, InfoCircleOutlined, ReloadOutlined } from '@/components/ui/icons';
 import { useTranslation } from 'react-i18next';
 import { open } from '@tauri-apps/plugin-dialog';
 import { 

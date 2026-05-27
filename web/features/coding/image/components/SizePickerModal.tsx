@@ -1,5 +1,5 @@
 import React from 'react';
-import { Input, Modal, Typography } from 'antd';
+import { Input, Modal, Typography } from '@/components/ui';
 import { useTranslation } from 'react-i18next';
 import {
   calculateImageSize,

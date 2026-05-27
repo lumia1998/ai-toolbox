@@ -1,6 +1,6 @@
 import React from 'react';
-import { AutoComplete, Form, Input, message, Modal } from 'antd';
-import { FileTextOutlined, TagsOutlined } from '@ant-design/icons';
+import { AutoComplete, Form, Input, message, Modal } from '@/components/ui';
+import { FileTextOutlined, TagsOutlined } from '@/components/ui/icons';
 import { useTranslation } from 'react-i18next';
 import * as api from '../../services/mcpApi';
 import type { McpServer } from '../../types';

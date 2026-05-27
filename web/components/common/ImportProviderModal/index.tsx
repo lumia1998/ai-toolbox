@@ -1,6 +1,6 @@
 import React from 'react';
-import { Modal, Checkbox, Button, Empty, Spin, Typography, Tag, Popconfirm, message } from 'antd';
-import { DeleteOutlined, ApiOutlined, CloudServerOutlined, AppstoreOutlined } from '@ant-design/icons';
+import { Modal, Checkbox, Button, Empty, Spin, Typography, Tag, Popconfirm, message } from '@/components/ui';
+import { DeleteOutlined, ApiOutlined, CloudServerOutlined, AppstoreOutlined } from '@/components/ui/icons';
 import { useTranslation } from 'react-i18next';
 import { listFavoriteProviders, deleteFavoriteProvider, type OpenCodeFavoriteProvider } from '@/services/opencodeApi';
 import type { ImportProviderModalProps } from './types';

@@ -1,6 +1,6 @@
 import type React from 'react';
-import { Card, Collapse, Tag, Typography, Space, Switch, Tooltip } from 'antd';
-import { SafetyOutlined, LockOutlined } from '@ant-design/icons';
+import { Card, Collapse, Tag, Typography, Space, Switch, Tooltip } from '@/components/ui';
+import { SafetyOutlined, LockOutlined } from '@/components/ui/icons';
 import { useTranslation } from 'react-i18next';
 import type { OfficialModel } from '@/services/opencodeApi';
 

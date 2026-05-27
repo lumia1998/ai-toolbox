@@ -1,6 +1,6 @@
 import React from 'react';
-import { Select, Spin, Empty, Button, Space, message } from 'antd';
-import { SyncOutlined } from '@ant-design/icons';
+import { Select, Spin, Empty, Button, Space, message } from '@/components/ui';
+import { SyncOutlined } from '@/components/ui/icons';
 import { useTranslation } from 'react-i18next';
 import type { OhMyOpenAgentConfig } from '@/types/ohMyOpenAgent';
 import { listOhMyOpenAgentConfigs, applyOhMyOpenAgentConfig } from '@/services/ohMyOpenAgentApi';

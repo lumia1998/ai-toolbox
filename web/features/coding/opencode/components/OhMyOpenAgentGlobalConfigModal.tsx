@@ -1,6 +1,6 @@
 import React from 'react';
-import { Modal, Form, Button, Select, Collapse, Input, Alert } from 'antd';
-import { ReloadOutlined } from '@ant-design/icons';
+import { Modal, Form, Button, Select, Collapse, Input, Alert } from '@/components/ui';
+import { ReloadOutlined } from '@/components/ui/icons';
 import { useTranslation } from 'react-i18next';
 import JsonEditor from '@/components/common/JsonEditor';
 import styles from './OhMyOpenAgentGlobalConfigModal.module.less';

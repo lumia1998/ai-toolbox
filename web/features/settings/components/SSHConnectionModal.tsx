@@ -5,7 +5,7 @@
  */
 
 import React, { useEffect } from 'react';
-import { Modal, Form, Input, InputNumber, Radio, Space } from 'antd';
+import { Modal, Form, Input, InputNumber, Radio, Space } from '@/components/ui';
 import { useTranslation } from 'react-i18next';
 import type { SSHConnection } from '@/types/sshsync';
 

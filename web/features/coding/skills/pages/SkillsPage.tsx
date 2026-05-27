@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom';
 import {
   Modal,
   message,
-} from 'antd';
+} from '@/components/ui';
 import {
   ChevronsDown,
   ChevronsUp,

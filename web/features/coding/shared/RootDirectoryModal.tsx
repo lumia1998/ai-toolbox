@@ -1,6 +1,6 @@
 import React from 'react';
-import { Button, Form, Input, Modal, Space, Typography, message } from 'antd';
-import { ExclamationCircleOutlined, FolderOpenOutlined, InfoCircleOutlined, ReloadOutlined } from '@ant-design/icons';
+import { Button, Form, Input, Modal, Space, Typography, message } from '@/components/ui';
+import { ExclamationCircleOutlined, FolderOpenOutlined, InfoCircleOutlined, ReloadOutlined } from '@/components/ui/icons';
 import { open } from '@tauri-apps/plugin-dialog';
 
 const { Text } = Typography;

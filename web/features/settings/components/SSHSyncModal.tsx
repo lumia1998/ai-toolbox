@@ -5,8 +5,8 @@
  */
 
 import React, { useCallback, useEffect, useState } from 'react';
-import { Modal, Switch, Select, Button, List, Space, Typography, Alert, Spin, Tag, Modal as AntdModal, Tabs, Tooltip, Progress, theme } from 'antd';
-import { CheckCircleOutlined, CloseCircleOutlined, ReloadOutlined, DeleteOutlined, EditOutlined, PlusOutlined, ClearOutlined, ApiOutlined } from '@ant-design/icons';
+import { Modal, Switch, Select, Button, List, Space, Typography, Alert, Spin, Tag, Modal as AntdModal, Tabs, Tooltip, Progress, theme } from '@/components/ui';
+import { CheckCircleOutlined, CloseCircleOutlined, ReloadOutlined, DeleteOutlined, EditOutlined, PlusOutlined, ClearOutlined, ApiOutlined } from '@/components/ui/icons';
 import { useTranslation } from 'react-i18next';
 import { useSSHSync } from '@/features/settings/hooks/useSSHSync';
 import {

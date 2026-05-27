@@ -1,5 +1,5 @@
 import React from 'react';
-import { Alert, Button, Modal, message } from 'antd';
+import { Alert, Button, Modal, message } from '@/components/ui';
 import { useTranslation } from 'react-i18next';
 import JsonEditor from '@/components/common/JsonEditor';
 import {

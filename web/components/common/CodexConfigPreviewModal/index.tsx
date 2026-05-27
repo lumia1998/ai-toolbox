@@ -1,6 +1,6 @@
 import type { FC } from 'react';
-import { Empty, Modal, Tabs, Typography } from 'antd';
-import type { TabsProps } from 'antd';
+import { Empty, Modal, Tabs, Typography } from '@/components/ui';
+import type { TabsProps } from '@/components/ui';
 import { useTranslation } from 'react-i18next';
 import JsonEditor from '@/components/common/JsonEditor';
 import TomlEditor from '@/components/common/TomlEditor';

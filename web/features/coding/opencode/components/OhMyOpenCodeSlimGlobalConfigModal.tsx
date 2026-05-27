@@ -1,5 +1,5 @@
 import React from 'react';
-import { Alert, Button, Collapse, Form, Modal, Select, message } from 'antd';
+import { Alert, Button, Collapse, Form, Modal, Select, message } from '@/components/ui';
 import { useTranslation } from 'react-i18next';
 import JsonEditor from '@/components/common/JsonEditor';
 import { SLIM_AGENT_TYPES, type OhMyOpenCodeSlimGlobalConfig, type OhMyOpenCodeSlimGlobalConfigInput } from '@/types/ohMyOpenCodeSlim';

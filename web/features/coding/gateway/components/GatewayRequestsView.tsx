@@ -1,6 +1,6 @@
 import React from 'react';
-import { DatePicker, Empty, Input, Pagination, Select, Table } from 'antd';
-import type { ColumnsType } from 'antd/es/table';
+import { DatePicker, Empty, Input, Pagination, Select, Table } from '@/components/ui';
+import type { ColumnsType } from '@/components/ui/table';
 import {
   AlertCircle,
   CalendarDays,

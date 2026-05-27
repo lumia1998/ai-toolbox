@@ -9,7 +9,7 @@ import {
   Collapse,
   Alert,
   Modal,
-} from 'antd';
+} from '@/components/ui';
 import {
   PlusOutlined,
   FolderOpenOutlined,
@@ -25,7 +25,7 @@ import {
   ImportOutlined,
   ThunderboltOutlined,
   MessageOutlined,
-} from '@ant-design/icons';
+} from '@/components/ui/icons';
 import { useTranslation } from 'react-i18next';
 import { openUrl, revealItemInDir } from '@tauri-apps/plugin-opener';
 import { listen } from '@tauri-apps/api/event';

@@ -1,6 +1,6 @@
 import type React from 'react';
-import { Button, Card, Empty, Space, Typography, Popconfirm, Collapse, Tag, Switch, Tooltip } from 'antd';
-import { PlusOutlined, EditOutlined, DeleteOutlined, HolderOutlined, CopyOutlined, LockOutlined, SafetyOutlined } from '@ant-design/icons';
+import { Button, Card, Empty, Space, Typography, Popconfirm, Collapse, Tag, Switch, Tooltip } from '@/components/ui';
+import { PlusOutlined, EditOutlined, DeleteOutlined, HolderOutlined, CopyOutlined, LockOutlined, SafetyOutlined } from '@/components/ui/icons';
 import { useTranslation } from 'react-i18next';
 import {
   DndContext,

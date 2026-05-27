@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tag } from 'antd';
+import { Tag } from '@/components/ui';
 import { openUrl } from '@tauri-apps/plugin-opener';
 
 const AI_SDK_DOCS_URL = 'https://ai-sdk.dev/docs/foundations/providers-and-models#ai-sdk-providers';

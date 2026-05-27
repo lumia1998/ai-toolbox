@@ -1,6 +1,6 @@
 import React from 'react';
-import { Modal, Button } from 'antd';
-import { ExclamationCircleOutlined } from '@ant-design/icons';
+import { Modal, Button } from '@/components/ui';
+import { ExclamationCircleOutlined } from '@/components/ui/icons';
 import { useTranslation } from 'react-i18next';
 import styles from './DeleteConfirmModal.module.less';
 

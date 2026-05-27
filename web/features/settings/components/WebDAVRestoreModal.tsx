@@ -1,6 +1,6 @@
 import React from 'react';
-import { Modal, List, Empty, Spin, message, Button, Popconfirm, Tabs, Tag, Typography } from 'antd';
-import { FileZipOutlined, DeleteOutlined } from '@ant-design/icons';
+import { Modal, List, Empty, Spin, message, Button, Popconfirm, Tabs, Tag, Typography } from '@/components/ui';
+import { FileZipOutlined, DeleteOutlined } from '@/components/ui/icons';
 import { useTranslation } from 'react-i18next';
 import { listWebDAVBackups, deleteWebDAVBackup, type BackupFileInfo } from '@/services';
 

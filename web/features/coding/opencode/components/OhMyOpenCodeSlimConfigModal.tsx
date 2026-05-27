@@ -1,6 +1,6 @@
 import React from 'react';
-import { Modal, Form, Input, Button, Typography, Collapse, Select, message, Divider } from 'antd';
-import { MoreOutlined, PlusOutlined, DeleteOutlined, SwapOutlined, ImportOutlined } from '@ant-design/icons';
+import { Modal, Form, Input, Button, Typography, Collapse, Select, message, Divider } from '@/components/ui';
+import { MoreOutlined, PlusOutlined, DeleteOutlined, SwapOutlined, ImportOutlined } from '@/components/ui/icons';
 import { useTranslation } from 'react-i18next';
 import {
   SLIM_AGENT_TYPES,

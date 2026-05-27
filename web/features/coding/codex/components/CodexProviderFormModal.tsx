@@ -1,7 +1,7 @@
 import React from 'react';
-import { Modal, Form, Input, Select, Space, Button, Alert, message, Typography, AutoComplete, Radio } from 'antd';
-import type { RadioChangeEvent } from 'antd';
-import { EyeInvisibleOutlined, EyeOutlined, CloudDownloadOutlined } from '@ant-design/icons';
+import { Modal, Form, Input, Select, Space, Button, Alert, message, Typography, AutoComplete, Radio } from '@/components/ui';
+import type { RadioChangeEvent } from '@/components/ui';
+import { EyeInvisibleOutlined, EyeOutlined, CloudDownloadOutlined } from '@/components/ui/icons';
 import { useTranslation } from 'react-i18next';
 import { invoke } from '@tauri-apps/api/core';
 import { useAppStore } from '@/stores';
@@ -36,7 +36,7 @@ const CODEX_OFFICIAL_FALLBACK_MODELS: FetchedModel[] = [
   created: undefined,
 }));
 
-// TomlEditor 与 antd Form.Item 集成的包装组件
+// TomlEditor 与本地 Form.Item 集成的包装组件
 interface TomlEditorFormItemProps {
   value?: string;
   onChange?: (value: string) => void;

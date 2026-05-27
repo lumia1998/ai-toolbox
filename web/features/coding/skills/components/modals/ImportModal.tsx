@@ -1,6 +1,6 @@
 import React from 'react';
-import { Modal, Checkbox, Button, Empty, message, Spin, Tooltip, Dropdown } from 'antd';
-import { WarningOutlined, FolderOpenOutlined, PlusOutlined } from '@ant-design/icons';
+import { Modal, Checkbox, Button, Empty, message, Spin, Tooltip, Dropdown } from '@/components/ui';
+import { WarningOutlined, FolderOpenOutlined, PlusOutlined } from '@/components/ui/icons';
 import { revealItemInDir } from '@tauri-apps/plugin-opener';
 import { useTranslation } from 'react-i18next';
 import { useSkillsStore } from '../../stores/skillsStore';
@@ -281,7 +281,7 @@ export const ImportModal: React.FC<ImportModalProps> = ({
                           </span>
                           <FolderOpenOutlined
                             className={styles.openFolder}
-                            onClick={(e) => handleOpenFolder(v.path, e)}
+                            onClick={(e: React.MouseEvent) => handleOpenFolder(v.path, e)}
                           />
                         </div>
                       </div>

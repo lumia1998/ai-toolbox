@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch } from 'antd';
+import { Switch } from '@/components/ui';
 import { platform } from '@tauri-apps/plugin-os';
 import {
   AlertCircle,

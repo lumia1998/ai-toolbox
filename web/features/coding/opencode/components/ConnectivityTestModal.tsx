@@ -1,6 +1,6 @@
 import React from 'react';
-import { Modal, Form, Input, InputNumber, Button, Collapse, Table, Tag, Space, Tooltip, message, Switch, Typography, Checkbox, Popconfirm, Select, type TableProps } from 'antd';
-import { CaretRightOutlined, SettingOutlined, InfoCircleOutlined, DeleteOutlined } from '@ant-design/icons';
+import { Modal, Form, Input, InputNumber, Button, Collapse, Table, Tag, Space, Tooltip, message, Switch, Typography, Checkbox, Popconfirm, Select, type TableProps } from '@/components/ui';
+import { CaretRightOutlined, SettingOutlined, InfoCircleOutlined, DeleteOutlined } from '@/components/ui/icons';
 import { useTranslation } from 'react-i18next';
 import JsonEditor from '@/components/common/JsonEditor';
 import {

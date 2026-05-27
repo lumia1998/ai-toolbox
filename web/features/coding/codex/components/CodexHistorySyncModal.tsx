@@ -1,6 +1,6 @@
 import React from 'react';
-import { Alert, Button, Descriptions, Modal, Space, Spin, Typography, message } from 'antd';
-import { DatabaseOutlined, FolderOpenOutlined, ReloadOutlined, SyncOutlined, UndoOutlined } from '@ant-design/icons';
+import { Alert, Button, Descriptions, Modal, Space, Spin, Typography, message } from '@/components/ui';
+import { DatabaseOutlined, FolderOpenOutlined, ReloadOutlined, SyncOutlined, UndoOutlined } from '@/components/ui/icons';
 import { useTranslation } from 'react-i18next';
 import { invoke } from '@tauri-apps/api/core';
 import { revealItemInDir } from '@tauri-apps/plugin-opener';

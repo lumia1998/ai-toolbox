@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Empty, Space, Typography, message, Spin, Select, Collapse, Form, Tooltip, Modal, Switch } from 'antd';
+import { Button, Empty, Space, Typography, message, Spin, Select, Collapse, Form, Tooltip, Modal, Switch } from '@/components/ui';
 import {
   PlusOutlined,
   FolderOpenOutlined,
@@ -21,7 +21,7 @@ import {
   ThunderboltOutlined,
   FileTextOutlined,
   MessageOutlined,
-} from '@ant-design/icons';
+} from '@/components/ui/icons';
 
 import { useTranslation } from 'react-i18next';
 import { openUrl, revealItemInDir } from '@tauri-apps/plugin-opener';

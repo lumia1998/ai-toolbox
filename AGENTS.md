@@ -49,6 +49,7 @@ This document provides essential information for AI coding agents working on thi
 | `tauri/src/coding/wsl/` | WSL 同步配置、自动同步监听、WSL Direct 状态消费 |
 | `tauri/src/coding/ssh/` | SSH 连接、文件映射、手动同步、MCP/Skills 远端同步 |
 | `tauri/resources/` | 编译期嵌入的模型默认数据资源：`preset_models.json`/`models.dev.json` 的来源、顺序语义与缓存边界 |
+| `web/components/ui/` | Radix UI + Tailwind 的本地 UI 兼容层、图标映射、全局 UI 样式 |
 | `web/features/coding/claudecode/` | Claude Code 前端页面、根目录配置、provider 与 prompt 交互 |
 | `web/features/coding/codex/` | Codex 前端页面、根目录配置、provider 与 prompt 交互 |
 | `web/features/coding/geminicli/` | Gemini CLI 前端页面、根目录配置、provider、prompt、usage 与 session 交互 |
@@ -68,7 +69,7 @@ This document provides essential information for AI coding agents working on thi
 ## Project Overview
 
 AI Toolbox is a cross-platform desktop application built with:
-- **Frontend**: React 19 + TypeScript 5 + Ant Design 5 + Vite 7
+- **Frontend**: React 19 + TypeScript 5 + Radix UI + Tailwind CSS + Vite 7
 - **Backend**: Tauri 2.x + Rust
 - **Database**: SQLite JSONB primary store; SurrealDB is only used for one-time legacy import
 - **Package Manager**: pnpm
@@ -191,7 +192,7 @@ cd tauri && cargo test test_name
 
 #### Imports Order
 1. React and React-related imports
-2. Third-party libraries (antd, react-router-dom, etc.)
+2. Third-party libraries (react-router-dom, Radix only inside the local UI layer, etc.)
 3. Internal aliases (`@/...`)
 4. Relative imports
 5. Style imports (`.less`, `.css`)
@@ -199,7 +200,7 @@ cd tauri && cargo test test_name
 ```typescript
 // Example
 import React from 'react';
-import { Layout, Tabs } from 'antd';
+import { Button, Tabs } from '@/components/ui';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { MODULES } from '@/constants';
@@ -347,22 +348,22 @@ fn command_name(param: &str) -> Result<ReturnType, String> {
 
 #### Modal Shell
 
-Do NOT heavily override Ant Design modal chrome (`.ant-modal-content`, `.ant-modal-header`, `.ant-modal-footer`, `.ant-modal-close`). Keep modal wrapper styles minimal — only adjust body padding if needed:
+Do NOT heavily override the shared modal chrome (`.ui-modal-content`, `.ui-modal-header`, `.ui-modal-footer`, `.ui-modal-close`). Keep modal wrapper styles minimal — only adjust body padding if needed:
 
 ```less
 // ✅ Minimal modal override (like FetchModelsModal)
 .modal {
-  :global(.ant-modal-body) {
+  :global(.ui-modal-body) {
     padding: 20px 24px 22px;
   }
 }
 
 // ❌ Don't do this — heavy chrome overrides with gradients, custom backgrounds, etc.
 .modal {
-  :global(.ant-modal-content) { background: ...; border-radius: 20px; }
-  :global(.ant-modal-header) { background: linear-gradient(...); }
-  :global(.ant-modal-footer) { background: ...; border-top: ...; }
-  :global(.ant-modal-close) { top: ...; border-radius: ...; transition: ...; }
+  :global(.ui-modal-content) { background: ...; border-radius: 20px; }
+  :global(.ui-modal-header) { background: linear-gradient(...); }
+  :global(.ui-modal-footer) { background: ...; border-top: ...; }
+  :global(.ui-modal-close) { top: ...; border-radius: ...; transition: ...; }
 }
 ```
 
@@ -382,7 +383,7 @@ Use plain `<section>` or `<div>` with `.sectionCard` class. Style must match Con
 
 #### Collapse Sections (Collapsible)
 
-The global `.ant-collapse` in `App.css` already provides `background + box-shadow + border-radius`. When using Collapse inside modals, override the shadow to match sectionCard style:
+The shared Collapse styles already provide `background + box-shadow + border-radius`. When using Collapse inside modals, override the shadow to match sectionCard style:
 
 ```less
 .sectionCollapse {
@@ -399,11 +400,11 @@ The global `.ant-collapse` in `App.css` already provides `background + box-shado
   }
   :global(.ant-collapse-content) {
     border-top: 1px solid var(--color-border) !important;
-    background: transparent !important;  // Override antd default colorBgContainer
+    background: transparent !important;
   }
   :global(.ant-collapse-content-box) {
     padding: 18px !important;
-    background: transparent !important;  // Override antd default colorBgContainer
+    background: transparent !important;
   }
 }
 ```
@@ -412,8 +413,7 @@ The global `.ant-collapse` in `App.css` already provides `background + box-shado
 - Don't set `background: transparent` on the outer Collapse — it removes the card appearance
 - Don't add `border + background + box-shadow` on `.ant-collapse-item` inside — it creates a nested card effect with gaps that don't reach the modal edge
 - Don't fight global styles with aggressive `!important` overrides on every element; only override what differs (shadow)
-- **Must set `background: transparent !important` on both `.ant-collapse-content` and `.ant-collapse-content-box`** — antd defaults these to `colorBgContainer` (white), which overrides the parent's `bg-elevated` background. The global `App.css` also sets `.ant-collapse-header` background to `bg-container`. Without transparent overrides, the content area shows white instead of the card's elevated background.
-- **Must add `bordered={false}` (or `ghost`) prop on `<Collapse>`** — without it, antd's CSS-in-JS injects default backgrounds (white header, white content) and border styles that override module-level `!important` overrides. Even though `.sectionCollapse` has `background: transparent !important` on sub-elements, antd's runtime styles can still win. Always pass `bordered={false}` to disable default chrome before applying custom sectionCollapse styles.
+- **Must set `background: transparent !important` on both `.ant-collapse-content` and `.ant-collapse-content-box`** when a module wraps Collapse in a custom section card. These compatibility class names are still emitted by the local UI layer so existing module CSS can keep working.
 - **Wrap modal body in `<div className={styles.content}>` and add `className={styles.form}` to `<Form>`** — the `.content` wrapper provides flex layout for alert + form spacing; the `.form` class applies consistent form-item margins, label color, and input border-radius across all sections. Omitting these causes inconsistent spacing and unstyled inputs inside Collapse sections.
 
 #### Horizontal Field Layout (Preferred)
@@ -456,7 +456,7 @@ Use vertical layout only when horizontal is impractical (very long labels, singl
 
 - Use CSS Modules with Less (`.module.less`)
 - Class naming: camelCase in Less files
-- Use Ant Design's design tokens when possible
+- Use theme CSS variables and local UI tokens when possible
 
 ```less
 .container {
@@ -474,7 +474,7 @@ Use vertical layout only when horizontal is impractical (very long labels, singl
 
 #### Layout Guidelines
 
-1. **Prefer Horizontal Layout**: Use Ant Design Form with `layout="horizontal"` for modal forms
+1. **Prefer Horizontal Layout**: Use the local UI `Form` with `layout="horizontal"` for modal forms
 2. **Label Placement**: Labels should be right-aligned and placed on the left side of inputs
 3. **Consistent Label Width**: Use `labelCol` and `wrapperCol` to maintain consistent proportions
 
@@ -508,7 +508,7 @@ Use vertical layout (`layout="vertical"`) only in these cases:
 
 ### Theme System (Dark Mode)
 
-**IMPORTANT: The application supports full dark mode / light mode / system theme switching. ALL UI colors must use theme variables or Ant Design tokens - NEVER hardcode color values.**
+**IMPORTANT: The application supports full dark mode / light mode / system theme switching. ALL UI colors must use theme variables or local UI tokens - NEVER hardcode color values.**
 
 #### Theme Architecture
 
@@ -520,7 +520,7 @@ The app uses a multi-layer theming system:
    - Persists preference to database
 
 2. **Theme Provider** (`web/app/providers.tsx`):
-   - Applies Ant Design theme algorithm (`darkAlgorithm` or `defaultAlgorithm`)
+   - Applies app theme state and local UI configuration
    - Sets `data-theme` attribute on `document.documentElement`
    - Updates window background color for native titlebar
 
@@ -564,9 +564,9 @@ The app uses a multi-layer theming system:
   border: 1px solid var(--color-border);
 }
 
-// ✅ Use Ant Design tokens (via ConfigProvider)
+// ✅ Use local UI tokens for brand colors
 .container {
-  color: #1890ff; // OK for brand colors managed by Ant Design
+  color: var(--ant-color-primary);
 }
 
 // ✅ Dark mode specific overrides

@@ -1,5 +1,5 @@
 import React from 'react';
-import { message } from 'antd';
+import { message } from '@/components/ui';
 import { arrayMove } from '@dnd-kit/sortable';
 import type { DragEndEvent } from '@dnd-kit/core';
 import { useTranslation } from 'react-i18next';

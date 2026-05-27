@@ -1,6 +1,6 @@
 import React from 'react';
-import { Typography, Button, Space, Empty, message, Modal, Spin, Collapse } from 'antd';
-import { PlusOutlined, FolderOpenOutlined, AppstoreOutlined, SyncOutlined, ExclamationCircleOutlined, LinkOutlined, EyeOutlined, EllipsisOutlined, DatabaseOutlined, ImportOutlined, FileTextOutlined, ThunderboltOutlined, EditOutlined, MessageOutlined } from '@ant-design/icons';
+import { Typography, Button, Space, Empty, message, Modal, Spin, Collapse } from '@/components/ui';
+import { PlusOutlined, FolderOpenOutlined, AppstoreOutlined, SyncOutlined, ExclamationCircleOutlined, LinkOutlined, EyeOutlined, EllipsisOutlined, DatabaseOutlined, ImportOutlined, FileTextOutlined, ThunderboltOutlined, EditOutlined, MessageOutlined } from '@/components/ui/icons';
 import { useTranslation } from 'react-i18next';
 import { openUrl, revealItemInDir } from '@tauri-apps/plugin-opener';
 import { invoke } from '@tauri-apps/api/core';

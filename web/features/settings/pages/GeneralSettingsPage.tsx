@@ -1,5 +1,5 @@
 import React from 'react';
-import { Typography, Button, Select, Space, message, Modal, Table, Switch, Progress, Input, Row, Col, Card, Divider } from 'antd';
+import { Typography, Button, Select, Space, message, Modal, Table, Switch, Progress, Input, Row, Col, Card, Divider } from '@/components/ui';
 import {
   EditOutlined,
   CloudUploadOutlined,
@@ -17,7 +17,7 @@ import {
   EyeOutlined,
   HolderOutlined,
   DragOutlined
-} from '@ant-design/icons';
+} from '@/components/ui/icons';
 import { useTranslation } from 'react-i18next';
 import {
   DndContext,

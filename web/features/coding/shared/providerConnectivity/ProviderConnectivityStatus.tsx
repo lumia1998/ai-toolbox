@@ -1,6 +1,6 @@
 import React from 'react';
-import { Tooltip, theme } from 'antd';
-import { LoadingOutlined } from '@ant-design/icons';
+import { Tooltip, theme } from '@/components/ui';
+import { LoadingOutlined } from '@/components/ui/icons';
 import { useTranslation } from 'react-i18next';
 import type { ProviderConnectivityStatusItem } from '@/components/common/ProviderCard/types';
 

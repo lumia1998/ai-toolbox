@@ -1,6 +1,6 @@
 import React from 'react';
-import { Button, Collapse, Empty, Modal, Space, Spin, Typography, message } from 'antd';
-import { FileTextOutlined, PlusOutlined } from '@ant-design/icons';
+import { Button, Collapse, Empty, Modal, Space, Spin, Typography, message } from '@/components/ui';
+import { FileTextOutlined, PlusOutlined } from '@/components/ui/icons';
 import { useTranslation } from 'react-i18next';
 import {
   DndContext,

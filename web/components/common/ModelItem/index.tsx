@@ -1,6 +1,6 @@
 import React from 'react';
-import { Button, Space, Typography, Popconfirm, Checkbox } from 'antd';
-import { EditOutlined, DeleteOutlined, HolderOutlined, CopyOutlined, CheckCircleOutlined } from '@ant-design/icons';
+import { Button, Space, Typography, Popconfirm, Checkbox } from '@/components/ui';
+import { EditOutlined, DeleteOutlined, HolderOutlined, CopyOutlined, CheckCircleOutlined } from '@/components/ui/icons';
 import { useTranslation } from 'react-i18next';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';

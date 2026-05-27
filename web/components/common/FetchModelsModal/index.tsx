@@ -1,6 +1,6 @@
 import React from 'react';
-import { Modal, Table, Radio, Button, Space, Typography, message, Alert, Input, Tooltip, Checkbox, Tag } from 'antd';
-import { CloudDownloadOutlined, ReloadOutlined, SearchOutlined, UndoOutlined } from '@ant-design/icons';
+import { Modal, Table, Radio, Button, Space, Typography, message, Alert, Input, Tooltip, Checkbox, Tag } from '@/components/ui';
+import { CloudDownloadOutlined, ReloadOutlined, SearchOutlined, UndoOutlined } from '@/components/ui/icons';
 import { useTranslation } from 'react-i18next';
 import { invoke } from '@tauri-apps/api/core';
 import type { FetchModelsModalProps, FetchedModel, ApiType, FetchModelsResponse } from './types';

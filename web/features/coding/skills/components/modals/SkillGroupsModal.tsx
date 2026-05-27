@@ -1,6 +1,6 @@
 import React from 'react';
-import { Form, Input, InputNumber, message, Modal, Button, Empty } from 'antd';
-import { PlusOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons';
+import { Form, Input, InputNumber, message, Modal, Button, Empty } from '@/components/ui';
+import { PlusOutlined, EditOutlined, DeleteOutlined } from '@/components/ui/icons';
 import { useTranslation } from 'react-i18next';
 import * as api from '../../services/skillsApi';
 import type { SkillGroupRecord } from '../../types';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal, Radio, Space, Typography, Alert } from 'antd';
+import { Modal, Radio, Space, Typography, Alert } from '@/components/ui';
 import { useTranslation } from 'react-i18next';
 import type { ImportConflictInfo, ImportConflictAction } from '@/types/claudecode';
 

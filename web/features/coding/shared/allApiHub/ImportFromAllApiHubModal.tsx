@@ -1,5 +1,5 @@
 import React from 'react';
-import { message, Modal, Typography } from 'antd';
+import { message, Modal, Typography } from '@/components/ui';
 import { useTranslation } from 'react-i18next';
 import ImportExternalProvidersModal from '@/components/common/ImportExternalProvidersModal';
 import type { ExternalProviderDisplayItem } from '@/components/common/ImportExternalProvidersModal/types';

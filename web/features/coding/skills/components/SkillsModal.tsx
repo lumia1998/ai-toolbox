@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal, Button, Space, Dropdown, MenuProps } from 'antd';
+import { Modal, Button, Space, Dropdown, MenuProps } from '@/components/ui';
 import {
   FileTextOutlined,
   PlusOutlined,
@@ -7,7 +7,7 @@ import {
   MoreOutlined,
   SettingOutlined,
   CloudDownloadOutlined,
-} from '@ant-design/icons';
+} from '@/components/ui/icons';
 import { useTranslation } from 'react-i18next';
 import { useSkillsStore } from '../stores/skillsStore';
 import { useSkills } from '../hooks/useSkills';

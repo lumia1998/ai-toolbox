@@ -13,7 +13,7 @@ import {
   Tag,
   Typography,
   message,
-} from 'antd';
+} from '@/components/ui';
 import {
   CheckCircleOutlined,
   CloudDownloadOutlined,
@@ -25,7 +25,7 @@ import {
   ReloadOutlined,
   SearchOutlined,
   StopOutlined,
-} from '@ant-design/icons';
+} from '@/components/ui/icons';
 import { useTranslation } from 'react-i18next';
 import { openUrl } from '@tauri-apps/plugin-opener';
 import JsonPreviewModal from '@/components/common/JsonPreviewModal';

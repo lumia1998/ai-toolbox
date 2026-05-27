@@ -1,6 +1,6 @@
 import React from 'react';
-import { Modal, Form, Input, Select, Button } from 'antd';
-import { ImportOutlined, EyeOutlined, EyeInvisibleOutlined } from '@ant-design/icons';
+import { Modal, Form, Input, Select, Button } from '@/components/ui';
+import { ImportOutlined, EyeOutlined, EyeInvisibleOutlined } from '@/components/ui/icons';
 import { useTranslation } from 'react-i18next';
 import { useAppStore } from '@/stores';
 import type { OpenClawProviderConfig } from '@/types/openclaw';

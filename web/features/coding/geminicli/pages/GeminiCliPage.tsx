@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Collapse, Descriptions, Empty, Modal, Space, Spin, Typography, message } from 'antd';
+import { Button, Collapse, Descriptions, Empty, Modal, Space, Spin, Typography, message } from '@/components/ui';
 import {
   AppstoreOutlined,
   CopyOutlined,
@@ -13,7 +13,7 @@ import {
   MessageOutlined,
   PlusOutlined,
   SyncOutlined,
-} from '@ant-design/icons';
+} from '@/components/ui/icons';
 import { useTranslation } from 'react-i18next';
 import { invoke } from '@tauri-apps/api/core';
 import { openUrl, revealItemInDir } from '@tauri-apps/plugin-opener';

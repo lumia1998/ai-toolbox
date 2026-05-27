@@ -1,6 +1,6 @@
 import React from 'react';
-import { Typography, Card } from 'antd';
-import { RobotOutlined } from '@ant-design/icons';
+import { Typography, Card } from '@/components/ui';
+import { RobotOutlined } from '@/components/ui/icons';
 import { useTranslation } from 'react-i18next';
 
 const { Title, Text } = Typography;

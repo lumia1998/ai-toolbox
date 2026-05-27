@@ -1,7 +1,7 @@
 import React from 'react';
-import { Modal, Form, Input, Select, Space, Button, Alert, message, AutoComplete, Radio, Checkbox, Dropdown } from 'antd';
-import type { RadioChangeEvent } from 'antd';
-import { EyeInvisibleOutlined, EyeOutlined, CloudDownloadOutlined, DownOutlined, ThunderboltOutlined } from '@ant-design/icons';
+import { Modal, Form, Input, Select, Space, Button, Alert, message, AutoComplete, Radio, Checkbox, Dropdown } from '@/components/ui';
+import type { RadioChangeEvent } from '@/components/ui';
+import { EyeInvisibleOutlined, EyeOutlined, CloudDownloadOutlined, DownOutlined, ThunderboltOutlined } from '@/components/ui/icons';
 import { Settings2 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { invoke } from '@tauri-apps/api/core';

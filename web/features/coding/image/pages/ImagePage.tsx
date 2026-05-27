@@ -33,9 +33,9 @@ import {
   Tag,
   Typography,
   Upload,
-} from 'antd';
-import type { MenuProps } from 'antd';
-import { ExclamationCircleOutlined } from '@ant-design/icons';
+} from '@/components/ui';
+import type { MenuProps } from '@/components/ui';
+import { ExclamationCircleOutlined } from '@/components/ui/icons';
 import { convertFileSrc } from '@tauri-apps/api/core';
 import { listen } from '@tauri-apps/api/event';
 import { save as saveDialog } from '@tauri-apps/plugin-dialog';

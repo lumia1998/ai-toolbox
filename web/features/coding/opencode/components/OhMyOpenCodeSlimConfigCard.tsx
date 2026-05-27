@@ -1,6 +1,6 @@
-import { Card, Typography, Space, Button, Tag, Switch, Dropdown, message, Tooltip } from 'antd';
-import { EditOutlined, CopyOutlined, DeleteOutlined, CheckCircleOutlined, CheckOutlined, MoreOutlined, HolderOutlined } from '@ant-design/icons';
-import type { MenuProps } from 'antd';
+import { Card, Typography, Space, Button, Tag, Switch, Dropdown, message, Tooltip } from '@/components/ui';
+import { EditOutlined, CopyOutlined, DeleteOutlined, CheckCircleOutlined, CheckOutlined, MoreOutlined, HolderOutlined } from '@/components/ui/icons';
+import type { MenuProps } from '@/components/ui';
 import { useTranslation } from 'react-i18next';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';

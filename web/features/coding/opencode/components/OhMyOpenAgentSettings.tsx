@@ -1,6 +1,6 @@
 import React from 'react';
-import { Button, Typography, Collapse, Empty, Spin, Space, message, Modal, Alert, Tag } from 'antd';
-import { PlusOutlined, AppstoreOutlined, LinkOutlined, WarningOutlined, ThunderboltOutlined, SyncOutlined, CheckCircleOutlined } from '@ant-design/icons';
+import { Button, Typography, Collapse, Empty, Spin, Space, message, Modal, Alert, Tag } from '@/components/ui';
+import { PlusOutlined, AppstoreOutlined, LinkOutlined, WarningOutlined, ThunderboltOutlined, SyncOutlined, CheckCircleOutlined } from '@/components/ui/icons';
 import { useTranslation } from 'react-i18next';
 import {
   DndContext,

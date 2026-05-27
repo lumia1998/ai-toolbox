@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal, Form, Input, Switch, Row, Col } from 'antd';
+import { Modal, Form, Input, Switch, Row, Col } from '@/components/ui';
 import { useTranslation } from 'react-i18next';
 import { useSettingsStore, type S3ConfigFE } from '@/stores';
 

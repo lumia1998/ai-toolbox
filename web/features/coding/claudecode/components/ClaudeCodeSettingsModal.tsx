@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal, Switch, message } from 'antd';
+import { Modal, Switch, message } from '@/components/ui';
 import { useTranslation } from 'react-i18next';
 import {
   getClaudePluginStatus,
