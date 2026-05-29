@@ -66,19 +66,50 @@ import {
 } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 
+const cx = (...classes: Array<string | false | null | undefined>) => classes.filter(Boolean).join(' ');
+
+const toKebabCase = (value: string) => value
+  .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
+  .replace(/[\s_]+/g, '-')
+  .toLowerCase();
+
 const createIcon = (Icon: LucideIcon) => {
-  const WrappedIcon = ({ className, style, spin, ...props }: any) => (
-    <Icon
+  const iconName = toKebabCase(Icon.displayName || Icon.name || 'icon');
+  const WrappedIcon = ({
+    className,
+    style,
+    spin,
+    size,
+    color,
+    strokeWidth,
+    role,
+    'aria-label': ariaLabel,
+    ...props
+  }: any) => (
+    <span
       {...props}
-      className={className}
+      role={role ?? 'img'}
+      aria-label={ariaLabel ?? iconName}
+      className={cx('anticon', `anticon-${iconName}`, className)}
       style={{
-        width: '1em',
-        height: '1em',
-        verticalAlign: '-0.125em',
-        animation: spin ? 'ui-spin 1s linear infinite' : undefined,
+        fontSize: size,
+        color,
         ...style,
       }}
-    />
+    >
+      <Icon
+        aria-hidden="true"
+        focusable="false"
+        strokeWidth={strokeWidth}
+        style={{
+          display: 'inline-block',
+          width: '1em',
+          height: '1em',
+          flexShrink: 0,
+          animation: spin ? 'ui-spin 1s linear infinite' : undefined,
+        }}
+      />
+    </span>
   );
   return WrappedIcon;
 };

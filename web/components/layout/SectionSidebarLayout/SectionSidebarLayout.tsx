@@ -238,7 +238,7 @@ const SectionSidebarLayout: React.FC<SectionSidebarLayoutProps> = ({
         <aside className={`${styles.sidebar} ${internalSidebarCollapsed ? styles.sidebarCollapsed : ''}`}>
           <div className="sidebarHeaderWrapper">
             <div className={styles.sidebarHeader}>
-              {!internalSidebarCollapsed ? <Text strong>{sidebarTitle}</Text> : <span />}
+              {!internalSidebarCollapsed && <Text strong>{sidebarTitle}</Text>}
               <Button
                 type="text"
                 size="small"

@@ -10,13 +10,13 @@
 
 The app keeps an AntD-shaped component API to minimize migration churn across existing feature modules, but the runtime implementation is local React + Radix UI + Tailwind/CSS. This lets feature code stay simple while removing AntD as a dependency.
 
-The visual direction is consumer-facing, simple, and Apple-like liquid glass: restrained surfaces, soft translucency, clear focus states, and no heavy enterprise-dashboard chrome.
+The visual source of truth is the previous AntD UI on `main`: migrating internals to Radix/Tailwind must not introduce a new visual language. Prefer AntD-compatible typography, icon alignment, control sizing, modal chrome, card radius, spacing, shadows, and `.ant-*` class behavior over decorative glass/translucent styling.
 
 ## Key Flow
 
 - Prefer adapting broad API or styling differences in `web/components/ui/` rather than touching many feature call sites.
 - Keep static feedback surfaces (`message`, `notification`, `Modal.confirm`, `Popconfirm`) on the same local styled layer; do not fall back to browser-native `alert` or `confirm`.
-- Preserve existing `.ant-*` compatibility class names only where existing module CSS still depends on them. New UI-layer styling should use `.ui-*` classes.
+- Preserve existing `.ant-*` compatibility class names broadly for migrated AntD-shaped components. Feature CSS still targets these names, and visual parity depends on them; `.ui-*` classes are implementation hooks layered underneath.
 
 ## Gotchas
 

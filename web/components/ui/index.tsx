@@ -440,6 +440,11 @@ const mergeValues = (base: AnyRecord, patch: AnyRecord): AnyRecord => {
 
 const FormContext = React.createContext<FormStore | null>(null);
 const FormListPrefixContext = React.createContext<Array<string | number>>([]);
+const FormLayoutContext = React.createContext<{
+  layout: FormProps['layout'];
+  labelCol?: AnyRecord;
+  wrapperCol?: AnyRecord;
+}>({ layout: 'horizontal' });
 
 const useForceUpdate = () => {
   const [, setTick] = React.useState(0);
@@ -461,6 +466,8 @@ type FormProps<T = AnyRecord> = BaseProps & {
   form?: FormInstance<T>;
   initialValues?: Partial<T>;
   layout?: 'horizontal' | 'vertical' | 'inline';
+  wrapperCol?: AnyRecord;
+  labelCol?: AnyRecord;
   onFinish?: (values: T) => void;
   onValuesChange?: (changedValues: Partial<T>, values: T) => void;
 };
@@ -508,11 +515,14 @@ const FormComponent = <T extends AnyRecord = AnyRecord>({
   onFinish,
   onValuesChange,
   layout = 'horizontal',
+  labelCol,
+  wrapperCol,
   className,
   children,
   ...rest
 }: FormProps<T>) => {
   const store = useFormStore(form);
+  const layoutContext = React.useMemo(() => ({ layout, labelCol, wrapperCol }), [layout, labelCol, wrapperCol]);
   React.useEffect(() => {
     store.setInitialValues(initialValues);
   }, [store, initialValues]);
@@ -521,18 +531,60 @@ const FormComponent = <T extends AnyRecord = AnyRecord>({
   }, [store, onFinish, onValuesChange]);
   return (
     <FormContext.Provider value={store}>
-      <form
-        {...rest}
-        className={cx('ant-form', layout && `ant-form-${layout}`, 'ui-form', `ui-form-${layout}`, className)}
-        onSubmit={(event) => {
-          event.preventDefault();
-          store.submit();
-        }}
-      >
-        {children}
-      </form>
+      <FormLayoutContext.Provider value={layoutContext}>
+        <form
+          {...rest}
+          className={cx('ant-form', layout && `ant-form-${layout}`, 'ui-form', `ui-form-${layout}`, className)}
+          onSubmit={(event) => {
+            event.preventDefault();
+            store.submit();
+          }}
+        >
+          {children}
+        </form>
+      </FormLayoutContext.Provider>
     </FormContext.Provider>
   );
+};
+
+const colSpanToPercent = (col?: AnyRecord): string | undefined => {
+  const span = Number(col?.span);
+  if (Number.isFinite(span) && span > 0) return `${(Math.min(span, 24) / 24) * 100}%`;
+  return undefined;
+};
+
+const getFormItemGridColumns = (layout: FormProps['layout'], labelCol?: AnyRecord, wrapperCol?: AnyRecord): string | undefined => {
+  if (layout !== 'horizontal') return undefined;
+
+  const labelFlex = typeof labelCol?.flex === 'string' ? labelCol.flex : undefined;
+  const wrapperFlex = typeof wrapperCol?.flex === 'string' ? wrapperCol.flex : undefined;
+  if (labelFlex || wrapperFlex) {
+    return `${labelFlex || 'max-content'} minmax(0, ${wrapperFlex || '1fr'})`;
+  }
+
+  const labelWidth = colSpanToPercent(labelCol);
+  const wrapperWidth = colSpanToPercent(wrapperCol);
+  if (labelWidth || wrapperWidth) {
+    return `${labelWidth || 'max-content'} minmax(0, ${wrapperWidth || '1fr'})`;
+  }
+
+  return undefined;
+};
+
+const getWrapperOnlyGridColumns = (layout: FormProps['layout'], wrapperCol?: AnyRecord): string | undefined => {
+  if (layout !== 'horizontal') return undefined;
+
+  const offset = Number(wrapperCol?.offset);
+  const span = Number(wrapperCol?.span);
+  if (Number.isFinite(offset) && offset > 0 && Number.isFinite(span) && span > 0) {
+    return `${(Math.min(offset, 24) / 24) * 100}% minmax(0, ${(Math.min(span, 24) / 24) * 100}%)`;
+  }
+
+  if (typeof wrapperCol?.flex === 'string') {
+    return `0 minmax(0, ${wrapperCol.flex})`;
+  }
+
+  return undefined;
 };
 
 const FormItem = ({
@@ -551,9 +603,12 @@ const FormItem = ({
   style,
   shouldUpdate,
   getValueFromEvent,
+  labelCol,
+  wrapperCol,
   ...rest
 }: FormItemProps) => {
   const store = React.useContext(FormContext);
+  const formLayout = React.useContext(FormLayoutContext);
   const listPrefix = React.useContext(FormListPrefixContext);
   const resolvedName = React.useMemo(() => resolveNamePath(name, listPrefix), [name, listPrefix]);
   const forceUpdate = useForceUpdate();
@@ -579,6 +634,11 @@ const FormItem = ({
   }
 
   const value = resolvedName && store ? store.getFieldValue(resolvedName) : undefined;
+  const effectiveLabelCol = labelCol ?? formLayout.labelCol;
+  const effectiveWrapperCol = wrapperCol ?? formLayout.wrapperCol;
+  const rowGridColumns = label
+    ? getFormItemGridColumns(formLayout.layout, effectiveLabelCol, effectiveWrapperCol)
+    : getWrapperOnlyGridColumns(formLayout.layout, effectiveWrapperCol);
   const controlProps = resolvedName && store
     ? {
         [valuePropName]: valuePropName === 'checked' ? Boolean(value) : value,
@@ -594,11 +654,26 @@ const FormItem = ({
   if (noStyle) return <>{control}</>;
   return (
     <div {...rest} hidden={hidden} className={cx('ant-form-item', 'ui-form-item', className)} style={style}>
-      {label && <div className="ant-form-item-label ui-form-item-label"><label className="ui-form-label">{label}{required && <span className="ui-required">*</span>}</label></div>}
-      <div className="ant-form-item-control ui-form-control">
-        <div className="ant-form-item-control-input">{control}</div>
-        {help && <div className="ui-form-help">{help}</div>}
-        {extra && <div className="ui-form-extra">{extra}</div>}
+      <div
+        className={cx(
+          'ant-form-item-row',
+          'ui-form-item-row',
+          !label && rowGridColumns && 'ui-form-item-row-offset',
+        )}
+        style={rowGridColumns ? ({ '--ui-form-item-grid': rowGridColumns } as React.CSSProperties) : undefined}
+      >
+        {label && (
+          <div className="ant-form-item-label ui-form-item-label">
+            <label className={cx('ui-form-label', required && 'ant-form-item-required')}>{label}{required && <span className="ui-required">*</span>}</label>
+          </div>
+        )}
+        <div className="ant-form-item-control ui-form-control">
+          <div className="ant-form-item-control-input">
+            <div className="ant-form-item-control-input-content">{control}</div>
+          </div>
+          {help && <div className="ant-form-item-explain ant-form-item-explain-error ui-form-help">{help}</div>}
+          {extra && <div className="ant-form-item-extra ui-form-extra">{extra}</div>}
+        </div>
       </div>
     </div>
   );
@@ -665,19 +740,49 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
   ghost,
   shape,
   ...rest
-}, ref) => (
-  <button
-    {...rest}
-    ref={ref}
-    type={htmlType || 'button'}
-    disabled={disabled || loading}
-    className={cx('ant-btn', type === 'primary' && 'ant-btn-primary', (!type || type === 'default' || type === 'dashed') && 'ant-btn-default', type === 'dashed' && 'ant-btn-dashed', type === 'link' && 'ant-btn-link', type === 'text' && 'ant-btn-text', danger && 'ant-btn-dangerous', 'ui-btn', type === 'primary' && 'ui-btn-primary', type === 'link' && 'ui-btn-link', type === 'text' && 'ui-btn-text', type === 'dashed' && 'ui-btn-dashed', danger && 'ui-btn-danger', size === 'small' && 'ui-btn-sm', block && 'ui-btn-block', ghost && 'ui-btn-ghost', shape === 'circle' && 'ui-btn-circle', className)}
-  >
-    {loading && <span className="ui-spinner ui-spinner-inline" />}
-    {icon}
-    {children}
-  </button>
-));
+}, ref) => {
+  const iconOnly = Boolean(icon && !children);
+  return (
+    <button
+      {...rest}
+      ref={ref}
+      type={htmlType || 'button'}
+      disabled={disabled || loading}
+      className={cx(
+        'ant-btn',
+        type === 'primary' && 'ant-btn-primary',
+        (!type || type === 'default' || type === 'dashed') && 'ant-btn-default',
+        type === 'dashed' && 'ant-btn-dashed',
+        type === 'link' && 'ant-btn-link',
+        type === 'text' && 'ant-btn-text',
+        danger && 'ant-btn-dangerous',
+        size === 'small' && 'ant-btn-sm',
+        size === 'large' && 'ant-btn-lg',
+        block && 'ant-btn-block',
+        ghost && 'ant-btn-background-ghost',
+        iconOnly && 'ant-btn-icon-only',
+        shape === 'circle' && 'ant-btn-circle',
+        'ui-btn',
+        type === 'primary' && 'ui-btn-primary',
+        type === 'link' && 'ui-btn-link',
+        type === 'text' && 'ui-btn-text',
+        type === 'dashed' && 'ui-btn-dashed',
+        danger && 'ui-btn-danger',
+        size === 'small' && 'ui-btn-sm',
+        size === 'large' && 'ui-btn-lg',
+        block && 'ui-btn-block',
+        ghost && 'ui-btn-ghost',
+        iconOnly && 'ui-btn-icon-only',
+        shape === 'circle' && 'ui-btn-circle',
+        className,
+      )}
+    >
+      {loading && <span className="ui-spinner ui-spinner-inline" />}
+      {icon}
+      {children}
+    </button>
+  );
+});
 Button.displayName = 'Button';
 
 type SpaceProps = Omit<React.HTMLAttributes<HTMLDivElement>, 'size'> & {
@@ -743,14 +848,14 @@ export const Typography: {
 } = {
   Text: ({ type, strong, code, copyable: _copyable, ellipsis: _ellipsis, className, children, ...rest }: AnyRecord) => {
     const TagName = code ? 'code' : 'span';
-    return <TagName {...rest} className={cx('ui-typography-text', type && `ui-text-${type}`, strong && 'ui-text-strong', className)}>{children}</TagName>;
+    return <TagName {...rest} className={cx('ant-typography', type && `ant-typography-${type}`, 'ui-typography-text', type && `ui-text-${type}`, strong && 'ui-text-strong', className)}>{children}</TagName>;
   },
   Title: ({ level = 1, className, children, ...rest }: AnyRecord) => {
     const TagName = `h${level}` as React.ElementType;
-    return <TagName {...rest} className={cx('ui-title', `ui-title-${level}`, className)}>{children}</TagName>;
+    return <TagName {...rest} className={cx('ant-typography', 'ui-title', `ui-title-${level}`, className)}>{children}</TagName>;
   },
-  Paragraph: ({ type, className, children, ...rest }: AnyRecord) => <p {...rest} className={cx('ui-paragraph', type && `ui-text-${type}`, className)}>{children}</p>,
-  Link: ({ className, children, onClick, ...rest }: AnyRecord) => <button type="button" {...rest} onClick={onClick as React.MouseEventHandler<HTMLButtonElement>} className={cx('ui-link', className)}>{children}</button>,
+  Paragraph: ({ type, className, children, ...rest }: AnyRecord) => <p {...rest} className={cx('ant-typography', type && `ant-typography-${type}`, 'ui-paragraph', type && `ui-text-${type}`, className)}>{children}</p>,
+  Link: ({ className, children, onClick, type, ...rest }: AnyRecord) => <button type="button" {...rest} onClick={onClick as React.MouseEventHandler<HTMLButtonElement>} className={cx('ant-typography', type && `ant-typography-${type}`, 'ui-link', className)}>{children}</button>,
 };
 
 const TextInput = React.forwardRef<HTMLInputElement, InputProps>(({
@@ -1726,7 +1831,7 @@ const ModalComponent: ModalComponent = ({
   return (
     <DialogPrimitive.Root open={isOpen} onOpenChange={(nextOpen) => !nextOpen && handleCancel()}>
       <DialogPrimitive.Portal>
-        <DialogPrimitive.Overlay className="ui-modal-mask" />
+        <DialogPrimitive.Overlay className="ant-modal-mask ui-modal-mask" />
         <DialogPrimitive.Content
           {...rest}
           className={cx('ant-modal-wrap', 'ui-modal-wrap', className)}
@@ -1743,7 +1848,13 @@ const ModalComponent: ModalComponent = ({
               <div className="ant-modal-content ui-modal-content">
                 <div className="ant-modal-header ui-modal-header">
                   <DialogPrimitive.Title className="ant-modal-title ui-modal-title">{title}</DialogPrimitive.Title>
-                  {closable && <DialogPrimitive.Close asChild><button type="button" className="ant-modal-close ui-modal-close">×</button></DialogPrimitive.Close>}
+                  {closable && (
+                    <DialogPrimitive.Close asChild>
+                      <button type="button" className="ant-modal-close ui-modal-close">
+                        <span className="ant-modal-close-x ui-modal-close-x">×</span>
+                      </button>
+                    </DialogPrimitive.Close>
+                  )}
                 </div>
                 <div className="ant-modal-body ui-modal-body">{children}</div>
                 {resolvedFooter}
@@ -2304,21 +2415,40 @@ type MenuComponentProps = BaseProps & MenuProps & {
   inlineCollapsed?: boolean;
 };
 
-export const Menu: React.FC<MenuComponentProps> = ({ items = [], onClick, className, selectedKeys = [] }) => (
-  <div className={cx('ant-menu', 'ui-menu', className)}>
-    {items.map((item: MenuItem) => (
-      <button
-        key={String(item.key)}
-        type="button"
-        className={cx('ant-menu-item', 'ui-menu-item', selectedKeys.includes(item.key || '') && 'ui-menu-item-selected')}
-        onClick={() => onClick?.({ key: String(item.key) })}
-      >
-        {item.icon && <span className="ant-menu-item-icon ui-menu-item-icon">{item.icon}</span>}
-        <span className="ant-menu-title-content">{item.label}</span>
-      </button>
-    ))}
-  </div>
-);
+export const Menu: React.FC<MenuComponentProps> = ({ items = [], onClick, className, selectedKeys = [], mode, inlineCollapsed }) => {
+  const resolvedMode = mode || 'vertical';
+  return (
+    <div
+      className={cx(
+        'ant-menu',
+        'ant-menu-root',
+        'ant-menu-light',
+        resolvedMode === 'inline' && 'ant-menu-inline',
+        resolvedMode === 'vertical' && 'ant-menu-vertical',
+        inlineCollapsed && 'ant-menu-inline-collapsed',
+        'ui-menu',
+        className,
+      )}
+    >
+      {items.map((item: MenuItem) => (
+        <button
+          key={String(item.key)}
+          type="button"
+          className={cx(
+            'ant-menu-item',
+            'ui-menu-item',
+            selectedKeys.includes(item.key || '') && 'ant-menu-item-selected',
+            selectedKeys.includes(item.key || '') && 'ui-menu-item-selected',
+          )}
+          onClick={() => onClick?.({ key: String(item.key) })}
+        >
+          {item.icon && <span className="ant-menu-item-icon ui-menu-item-icon">{item.icon}</span>}
+          <span className="ant-menu-title-content">{item.label}</span>
+        </button>
+      ))}
+    </div>
+  );
+};
 
 export const Drawer = ({ open, visible, title, children, onClose, width = 420, placement = 'right', className, ...rest }: AnyRecord) => (
   <DialogPrimitive.Root open={Boolean(open ?? visible)} onOpenChange={(nextOpen) => !nextOpen && onClose?.()}>
