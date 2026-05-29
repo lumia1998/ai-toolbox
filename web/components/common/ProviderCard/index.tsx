@@ -367,7 +367,7 @@ const ProviderCard: React.FC<ProviderCardProps> = ({
                   >
                     <Switch
                       size="small"
-                      checked={!isDisabled}
+                      checked={Boolean(isDisabled)}
                       onChange={() => {
                         onToggleDisabled();
                       }}
