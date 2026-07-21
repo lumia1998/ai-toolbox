@@ -200,6 +200,7 @@ cd tauri && cargo test test_name
   - `pnpm exec tsc --noEmit`
 - 发版相关 GitHub Actions 仍必须跑同一套全量测试闸门；为缩短整体耗时，打包 job 可以与测试 job 并行，但发布收尾、更新元数据或对外宣布可用必须依赖测试与打包全部成功。
 - GitHub Actions cache 有分支/tag 作用域隔离。不同 release tag 之间不能互相恢复缓存；发版 workflow 不要使用 Rust target cache，即使是 restore-only，也避免旧缓存恢复失败直接阻断打包。
+- 无 updater 私钥的 fork/测试发版必须显式关闭 `bundle.createUpdaterArtifacts` 并跳过 `latest.json` 组装。不要给 Tauri 传空的 `TAURI_SIGNING_PRIVATE_KEY`；空值仍会触发 updater 签名并在安装包生成后失败。
 - 如果本轮改动直接影响前端构建入口、路由、公共组件、i18n 资源、Vite/TS 配置，且成本可接受，还应额外跑：
   - `pnpm build`
 - 如果全量测试中存在**与本轮改动无关的既有失败**，不要跳过不报；需要在结果总结里明确写出：

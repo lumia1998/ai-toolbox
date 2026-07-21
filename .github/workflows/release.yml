@@ -235,14 +235,12 @@ jobs:
         uses: tauri-apps/tauri-action@v0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          TAURI_SIGNING_PRIVATE_KEY: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
-          TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ${{secrets.TAURI_SIGNING_PRIVATE_KEY_PASSWORD || '' }}
           NODE_OPTIONS: --max-old-space-size=4096
         with:
           releaseId: ${{ needs.create-release.outputs.release_id }}
           tauriScript: pnpm tauri
           projectPath: tauri
-          args: --target ${{ matrix.target }} --bundles ${{ matrix.bundle }}
+          args: --target ${{ matrix.target }} --bundles ${{ matrix.bundle }} --config tauri.unsigned.conf.json
 
       - name: List generated bundles (debug)
         if: always()
@@ -375,6 +373,7 @@ jobs:
     name: Assemble latest.json
     runs-on: ubuntu-latest
     needs: [build, test]
+    if: ${{ false }}
     permissions:
       contents: write
     steps:
