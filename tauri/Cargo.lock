@@ -106,7 +106,7 @@ dependencies = [
 
 [[package]]
 name = "ai-toolbox"
-version = "1.0.6"
+version = "1.7.0-beta.2"
 dependencies = [
  "anyhow",
  "arboard",
