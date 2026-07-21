@@ -1,5 +1,10 @@
 {
   "bundle": {
-    "createUpdaterArtifacts": false
+    "createUpdaterArtifacts": false,
+    "windows": {
+      "wix": {
+        "version": "1.7.0.2"
+      }
+    }
   }
 }
