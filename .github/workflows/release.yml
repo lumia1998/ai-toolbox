@@ -222,6 +222,10 @@ jobs:
           fi
           echo "✅ Tauri signing key prepared"
 
+      - name: Stage unsigned Tauri config
+        shell: bash
+        run: cp tauri/tauri.unsigned.conf.json tauri.unsigned.conf.json
+
       - name: Verify Rust and Tauri toolchain
         shell: bash
         run: |
@@ -240,7 +244,7 @@ jobs:
           releaseId: ${{ needs.create-release.outputs.release_id }}
           tauriScript: pnpm tauri
           projectPath: tauri
-          args: --target ${{ matrix.target }} --bundles ${{ matrix.bundle }} --config tauri/tauri.unsigned.conf.json
+          args: --target ${{ matrix.target }} --bundles ${{ matrix.bundle }} --config tauri.unsigned.conf.json
 
       - name: List generated bundles (debug)
         if: always()
