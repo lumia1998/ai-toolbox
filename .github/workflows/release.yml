@@ -240,7 +240,7 @@ jobs:
           releaseId: ${{ needs.create-release.outputs.release_id }}
           tauriScript: pnpm tauri
           projectPath: tauri
-          args: --target ${{ matrix.target }} --bundles ${{ matrix.bundle }} --config tauri.unsigned.conf.json
+          args: --target ${{ matrix.target }} --bundles ${{ matrix.bundle }} --config tauri/tauri.unsigned.conf.json
 
       - name: List generated bundles (debug)
         if: always()
